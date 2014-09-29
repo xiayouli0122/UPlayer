@@ -89,7 +89,7 @@
     <string name="add_to_playlist">添加到播放列表</string>
     <string name="use_as_ringtone">设置为手机铃声</string>
     <string name="delete_playlist">删除播放列表</string>
-    <string name="search">搜索音乐</string>
+    <string name="search_music">搜索音乐</string>
     <string name="real_remove">从本地存储中移除</string>
     <string name="remove">从播放列表中移除</string>
     <string name="image_edit_gallery">截取图库的图片</string>
@@ -175,7 +175,7 @@
     <string name="all_add">已刷新乐库，共增添</string>
     <string name="had_add">亲，您已刷新乐库！</string>
     <string name="set_time">请输入睡眠时间的整分钟数(分)</string>
-    <string name="Search">搜索</string>
+    <string name="search">搜索</string>
     <string name="Yes">确定</string>
     <string name="cancel">取消</string>
     <string name="start">开启</string>
@@ -184,6 +184,7 @@
     <string name="cannot_time">亲，睡眠定时不能重复设置哟！</string>
     <string name="set_time_tittle">睡眠定时仅限第一次</string>
     <string name="thanks_word">阅读完毕，感谢您对本软件的支持和使用！</string>
+    <string name="search_hint">请输入搜索关键字</string>
     
 
     <!-- External file dialog -->
@@ -196,5 +197,23 @@
     <!-- Titles for Albums/Artist screens -->
     <string name="artist_page_title">" 艺术家: "</string>
     <string name="album_page_title">" 专辑: "</string>
+    
+    <string name="lrc_not_found">未找到歌词文件</string>
+    
+    <!-- about -->
+    <string name="about_one">      iHappy音乐播放器为免费软件,不对用户收取任何费用,在使用过程中除歌词寻址以及歌曲下载其余皆不会产生网络流量,敬请放心!</string>
+    <string name="about_two">     温馨提示:此版本适用于Android 4.0.3及以上固件的设备，本软件下载、安装完全免费。用户在使用的过程中所产生的移动业务的数据费用皆由移动通信运营商收取。建议用户选择WLAN网络使用iHappy音乐，以减少相关的上网数据费用。</string>
+    <string name="about_three">     同时，该播放器默认为每次开启自动播放上一次退出应用时所记录歌曲；所以该现象不属于异常范畴!</string>
+    <string name="about_four">      开发者：萧丶翰       QQ：752280466</string>
+    <string name="about_five">     Copyright © 2013 JieYang XiaoHan Done.Just For Finding Work,All rights reserved.</string>
+    
+    <!-- slide menu -->
+    <string name="sm_main">      酷乐随行，愉悦心情! </string>
+    <string name="sm_eqalizer">  音乐均衡器</string>
+    <string name="sm_other_setting">  其它设置</string>
+    <string name="sm_local_search">  本地搜索</string>
+    <string name="sm_shuffle_all">  随便来一曲</string>
+    <string name="sm_refresh_music">  刷新乐库</string>
+    <string name="sm_exit">  退    出</string>
 
 </resources>

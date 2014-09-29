@@ -15,11 +15,10 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
-        android:gravity="center" 
+        android:gravity="center"
         android:orientation="vertical"
-        android:paddingBottom="50dip">
+        android:paddingBottom="50dip" >
 
-
         <Button
             android:id="@+id/guide_activity_btn"
             android:layout_width="216dip"
@@ -32,7 +31,6 @@
             android:text="开启音乐之窗"
             android:textColor="#ffffffff"
             android:textSize="14sp" />
-
     </LinearLayout>
 
 </LinearLayout>

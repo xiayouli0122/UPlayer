@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.xiaohan.ihappy"
+    package="com.yuri.uplayer"
     android:versionCode="1"
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="15" />
+        android:minSdkVersion="14"
+        android:targetSdkVersion="18" />
 
     <!-- This is used for Last.fm and Google Music -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -189,7 +189,7 @@
        
         <!-- 1x1 App Widget -->
         <receiver
-            android:name="com.xiaohan.ihappy.app.widgets.AppWidget11"
+            android:name="com.yuri.uplayer.app.widgets.AppWidget11"
             android:label="@string/apollo_1x1" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -201,7 +201,7 @@
         </receiver>
         <!-- 4x1 App Widget -->
         <receiver
-            android:name="com.xiaohan.ihappy.app.widgets.AppWidget41"
+            android:name="com.yuri.uplayer.app.widgets.AppWidget41"
             android:label="@string/apollo_4x1" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -213,7 +213,7 @@
         </receiver>
         <!-- 4x2 App Widget -->
         <receiver
-            android:name="com.xiaohan.ihappy.app.widgets.AppWidget42"
+            android:name="com.yuri.uplayer.app.widgets.AppWidget42"
             android:label="@string/apollo_4x2" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

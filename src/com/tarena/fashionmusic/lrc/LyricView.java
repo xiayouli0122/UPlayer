@@ -12,8 +12,8 @@ import android.widget.TextView;
 import java.util.List;
 
 
-import com.xiaohan.ihappy.service.ApolloService;
-import com.xiaohan.ihappy.ui.fragments.LrcShowFragment;
+import com.yuri.uplayer.service.ApolloService;
+import com.yuri.uplayer.ui.fragments.LrcShowFragment;
 import com.tarena.fashionmusic.lrc.Lyric;
 import com.tarena.fashionmusic.lrc.Sentence;
 

@@ -17,7 +17,7 @@
         android:id="@+id/tv_nolrc"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:text="未找到歌词文件"
+        android:text="@string/lrc_not_found"
         android:textColor="#ffffff"
         android:gravity="center"
         android:textSize="22dp"

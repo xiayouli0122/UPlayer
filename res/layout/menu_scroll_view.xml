@@ -71,7 +71,7 @@
      
     </LinearLayout>
     	
-    	<com.xiaohan.ihappy.helpers.utils.MenuHorizontalScrollView
+    	<com.yuri.uplayer.helpers.utils.MenuHorizontalScrollView
         	android:id="@+id/mScrollView"
 	        android:layout_width="fill_parent" 
 	        android:layout_height="fill_parent" 
@@ -89,7 +89,7 @@
 	           > 
 	     
 	        </LinearLayout> 
-    	</com.xiaohan.ihappy.helpers.utils.MenuHorizontalScrollView>
+    	</com.yuri.uplayer.helpers.utils.MenuHorizontalScrollView>
     
 </FrameLayout>
   

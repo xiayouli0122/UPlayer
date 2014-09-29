@@ -16,27 +16,27 @@ public class StrUtil {
 	@SuppressWarnings("deprecation")
 	public static String getcode(String filepath){
 		/*------------------------------------------------------------------------ 
-		  detectorÊÇÌ½²âÆ÷£¬Ëü°ÑÌ½²âÈÎÎñ½»¸ø¾ßÌåµÄÌ½²âÊµÏÖÀàµÄÊµÀıÍê³É¡£ 
-		  cpDetectorÄÚÖÃÁËÒ»Ğ©³£ÓÃµÄÌ½²âÊµÏÖÀà£¬ÕâĞ©Ì½²âÊµÏÖÀàµÄÊµÀı¿ÉÒÔÍ¨¹ıadd·½·¨ 
-		  ¼Ó½øÀ´£¬ÈçParsingDetector¡¢ JChardetFacade¡¢ASCIIDetector¡¢UnicodeDetector¡£   
-		  detector°´ÕÕ¡°Ë­×îÏÈ·µ»Ø·Ç¿ÕµÄÌ½²â½á¹û£¬¾ÍÒÔ¸Ã½á¹ûÎª×¼¡±µÄÔ­Ôò·µ»ØÌ½²âµ½µÄ 
-		  ×Ö·û¼¯±àÂë¡£ 
+		  detectoræ˜¯æ¢æµ‹å™¨ï¼Œå®ƒæŠŠæ¢æµ‹ä»»åŠ¡äº¤ç»™å…·ä½“çš„æ¢æµ‹å®ç°ç±»çš„å®ä¾‹å®Œæˆã€‚ 
+		  cpDetectorå†…ç½®äº†ä¸€äº›å¸¸ç”¨çš„æ¢æµ‹å®ç°ç±»ï¼Œè¿™äº›æ¢æµ‹å®ç°ç±»çš„å®ä¾‹å¯ä»¥é€šè¿‡addæ–¹æ³• 
+		  åŠ è¿›æ¥ï¼Œå¦‚ParsingDetectorã€ JChardetFacadeã€ASCIIDetectorã€UnicodeDetectorã€‚   
+		  detectoræŒ‰ç…§â€œè°æœ€å…ˆè¿”å›éç©ºçš„æ¢æµ‹ç»“æœï¼Œå°±ä»¥è¯¥ç»“æœä¸ºå‡†â€çš„åŸåˆ™è¿”å›æ¢æµ‹åˆ°çš„ 
+		  å­—ç¬¦é›†ç¼–ç ã€‚  
 		--------------------------------------------------------------------------*/
 		CodepageDetectorProxy detector = CodepageDetectorProxy.getInstance();
 		/*------------------------------------------------------------------------- 
-		  ParsingDetector¿ÉÓÃÓÚ¼ì²éHTML¡¢XMLµÈÎÄ¼ş»ò×Ö·ûÁ÷µÄ±àÂë,¹¹Ôì·½·¨ÖĞµÄ²ÎÊıÓÃÓÚ 
-		  Ö¸Ê¾ÊÇ·ñÏÔÊ¾Ì½²â¹ı³ÌµÄÏêÏ¸ĞÅÏ¢£¬Îªfalse²»ÏÔÊ¾¡£ 
+		  ParsingDetectorå¯ç”¨äºæ£€æŸ¥HTMLã€XMLç­‰æ–‡ä»¶æˆ–å­—ç¬¦æµçš„ç¼–ç ,æ„é€ æ–¹æ³•ä¸­çš„å‚æ•°ç”¨äº 
+		  æŒ‡ç¤ºæ˜¯å¦æ˜¾ç¤ºæ¢æµ‹è¿‡ç¨‹çš„è¯¦ç»†ä¿¡æ¯ï¼Œä¸ºfalseä¸æ˜¾ç¤ºã€‚ 
 		---------------------------------------------------------------------------*/
-		detector.add(new ParsingDetector(false));// Èç¹û²»Ï£ÍûÅĞ¶ÏxmlµÄencoding£¬¶øÊÇÒªÅĞ¶Ï¸ÃxmlÎÄ¼şµÄ±àÂë£¬Ôò¿ÉÒÔ×¢ÊÍµô
+		detector.add(new ParsingDetector(false));//// å¦‚æœä¸å¸Œæœ›åˆ¤æ–­xmlçš„encodingï¼Œè€Œæ˜¯è¦åˆ¤æ–­è¯¥xmlæ–‡ä»¶çš„ç¼–ç ï¼Œåˆ™å¯ä»¥æ³¨é‡Šæ‰
 		/*-------------------------------------------------------------------------- 
-		   JChardetFacade·â×°ÁËÓÉMozilla×éÖ¯Ìá¹©µÄJChardet£¬Ëü¿ÉÒÔÍê³É´ó¶àÊıÎÄ¼şµÄ±àÂë 
-		   ²â¶¨¡£ËùÒÔ£¬Ò»°ãÓĞÁËÕâ¸öÌ½²âÆ÷¾Í¿ÉÂú×ã´ó¶àÊıÏîÄ¿µÄÒªÇó£¬Èç¹ûÄã»¹²»·ÅĞÄ£¬¿ÉÒÔ  
-		   ÔÙ¶à¼Ó¼¸¸öÌ½²âÆ÷£¬±ÈÈçÏÂÃæµÄASCIIDetector¡¢UnicodeDetectorµÈ¡£ 
+		   JChardetFacadeå°è£…äº†ç”±Mozillaç»„ç»‡æä¾›çš„JChardetï¼Œå®ƒå¯ä»¥å®Œæˆå¤§å¤šæ•°æ–‡ä»¶çš„ç¼–ç  
+		   æµ‹å®šã€‚æ‰€ä»¥ï¼Œä¸€èˆ¬æœ‰äº†è¿™ä¸ªæ¢æµ‹å™¨å°±å¯æ»¡è¶³å¤§å¤šæ•°é¡¹ç›®çš„è¦æ±‚ï¼Œå¦‚æœä½ è¿˜ä¸æ”¾å¿ƒï¼Œå¯ä»¥  
+		   å†å¤šåŠ å‡ ä¸ªæ¢æµ‹å™¨ï¼Œæ¯”å¦‚ä¸‹é¢çš„ASCIIDetectorã€UnicodeDetectorç­‰ã€‚ 
 		  ---------------------------------------------------------------------------*/
 		detector.add(JChardetFacade.getInstance());
-		// ASCIIDetectorÓÃÓÚASCII±àÂë²â¶¨
+		// ASCIIDetectorç”¨äºASCIIç¼–ç æµ‹å®š
 		detector.add(ASCIIDetector.getInstance());
-		// UnicodeDetectorÓÃÓÚUnicode¼Ò×å±àÂëµÄ²â¶¨
+		// UnicodeDetectorç”¨äºUnicodeå®¶æ—ç¼–ç çš„æµ‹å®š
 		detector.add(UnicodeDetector.getInstance());
 		Charset charset = null;
 		File f = new File(filepath);
@@ -46,10 +46,10 @@ public class StrUtil {
 			ex.printStackTrace();
 		}
 		if (charset != null) {
-			System.out.println(f.getName() + "±àÂëÊÇ£º" + charset.name());
+			System.out.println(f.getName() + "ç¼–ç æ˜¯ï¼š" + charset.name());
 			   return charset.name();
 		} else {
-			System.out.println(f.getName() + "Î´Öª");
+			System.out.println(f.getName() + "æœªçŸ¥");
 			return "BIG-5";
 		}
 

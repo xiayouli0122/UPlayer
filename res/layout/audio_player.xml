@@ -19,7 +19,7 @@
         
    	 	<include layout="@layout/shadow" />
    	 	
-        <com.xiaohan.ihappy.ui.widgets.VisualizerView
+        <com.yuri.uplayer.ui.widgets.VisualizerView
             android:id="@+id/visualizerView"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
