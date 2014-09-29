@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/carol_topbar"
+    style="@style/topbar_bg" >
+
+    <Button
+        android:id="@+id/carol_menuBtn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_centerVertical="true"
+        style="@style/topbar_left_btn"
+        android:background="@drawable/menu_unfold" />
+
+    <ImageView
+        android:id="@+id/home_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/ic_logo" />
+
+</RelativeLayout>

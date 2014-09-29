@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- App name -->
+    <string name="app_name">iHappy</string>
+
+    <!-- Content descriptions for the Bottom Action Bar -->
+    <string name="cd_favorite">标记为喜爱的</string>
+    <string name="cd_search">搜索您的音乐库</string>
+    <string name="cd_overflow">更多选项</string>
+    <string name="cd_bottom_action_bar_album_art">专辑图片</string>
+    <string name="cd_repeat">重复一首或全部</string>
+    <string name="cd_previous">前一首</string>
+    <string name="cd_play">暂停/继续</string>
+    <string name="cd_next">下一首</string>
+    <string name="cd_shuffle">随机播放</string>
+    <string name="menu_title">iHappy音乐播放器</string>
+    <string name="menu_sig">让音乐愉悦您的心，天天iHappy</string>
+
+    <!-- AudioPlayer title -->
+    <string name="nowplaying">现在播放</string>
+
+    <!-- Used to indicate the number of albums for an artist -->
+    <plurals name="Nalbums">
+
+        <!-- Number of albums is one -->
+        <item quantity="one">1 张专辑</item>
+        <!-- Number of albums is more than one -->
+        <item quantity="other"><xliff:g id="count">%d</xliff:g> 张专辑</item>
+    </plurals>
+
+    <!-- Used to indicate the number of songs for an album -->
+
+    <plurals name="Nsongs">
+
+        <!-- Number of songs is one -->
+        <item quantity="one">1 首歌曲</item>
+        <item quantity="other"><xliff:g id="count">%d</xliff:g> 首歌曲</item>
+    </plurals>
+
+    <!-- Toasts after adding song(s) to playlists -->
+    <plurals name="NNNtrackstoplaylist">
+        <!-- message shown when one song was added -->
+        <item quantity="one">1 首歌曲添加到播放列表.</item>
+        <!-- message shown when zero or more than one song was added -->
+        <item quantity="other"><xliff:g id="number" example="27">%d</xliff:g> 首歌曲添加到播放列表.</item>
+    </plurals>
+    
+    
+    <!-- Do not translate. Duration format for duration < 1 hour -->
+    <string name="durationformatshort" translatable="false">
+        <xliff:g id="format">%2$d:%5$02d</xliff:g></string>
+    <!-- Do not translate. Duration format for duration >= 1 hour -->
+    <string name="durationformatlong" translatable="false">
+        <xliff:g id="format">%1$d:%3$02d:%5$02d</xliff:g></string>
+        
+    
+    
+    <!-- Headers -->
+    <string name="album_header">专辑列表</string>
+    <string name="track_header">曲目列表</string>
+
+    <!-- Options MenuItems -->
+    <string name="settings">设置</string>
+    <string name="shuffle_all">全部随机播放</string>
+    <string name="share">分享</string>
+    <string name="play_store">Play 商店</string>
+
+    <!-- Set track as ringtone -->
+    <string name="set_as_ringtone">\"<xliff:g id="name" example="Alarm Bell">%s</xliff:g>\" 设置为手机铃声</string>
+
+    <!-- Transient popup message shown after renaming a playlist -->
+    <string name="rename_playlist">重命名播放列表</string>
+
+    <!-- Shuffle and repeat messages -->
+    <string name="repeat_one">重复播放当前歌曲</string>
+    <string name="repeat_all">重复播放所有歌曲</string>
+    <string name="repeat_off">重复播放已关闭</string>
+    <string name="shuffle_off">随机播放已关闭</string>
+    <string name="shuffle_on">随机播放已开启</string>
+
+    <!-- Share Intent -->
+    <string name="now_listening_to">现在播放:</string>
+    <string name="by">艺术家:</string>
+    <string name="share_track_using">分享此曲目</string>
+
+    <!-- ContextMenu items -->
+    <string name="play_all">全部播放</string>
+    <string name="add_to_playlist">添加到播放列表</string>
+    <string name="use_as_ringtone">设置为手机铃声</string>
+    <string name="delete_playlist">删除播放列表</string>
+    <string name="search">搜索音乐</string>
+    <string name="real_remove">从本地存储中移除</string>
+    <string name="remove">从播放列表中移除</string>
+    <string name="image_edit_gallery">截取图库的图片</string>
+    <string name="image_edit_file">默认显示文件原始图片</string>
+    <string name="image_edit_lastfm">从last.fm取图像</string>
+    <string name="image_edit_web">获取网络上相应的图片</string>
+    
+    
+      <!--  ContextMenu Headers -->
+    <string name="image_edit_albums">编辑唱片集图片</string>
+    <string name="image_edit_artists">编辑艺术家图片</string>
+    <string name="image_edit_genre">编辑流派图片</string>
+    <string name="image_edit_playlist">编辑播放列表图片</string>
+
+    <!-- App Widgets -->
+    <string name="apollo_1x1">iHappyMusic (1x1)</string>
+    <string name="apollo_4x1">iHappyMusic (4x1)</string>
+    <string name="apollo_4x2">iHappyMusic (4x2)</string>
+
+    <!-- Unknown genre name -->
+    <string name="unknown">未知</string>
+
+    <!-- Settings -->
+    <string name="about">关于 iHappyMusic</string>
+    <string name="eqalizer">均衡器</string>
+    <string name="settings_storage_category">Storage</string>
+    <string name="header_interface">界面</string>
+    <string name="themes">主题</string>
+    <string name="apollo_themes">请选择 iHappyMusic 的主题</string>
+    <string name="select_theme">更换主题</string>
+    <string name="version">iHappyMusic 版本</string>
+    <string name="tab_visibility_title">Tab标题的可见个数</string>
+    <string name="tab_visibility_summary">请选择您要显示的标签</string>
+    <string name="settings_delete_cache_title">删除缓存</string>
+    <string name="settings_delete_cache_summary">清除所有缓存的图像</string>
+    <string name="delete_warning">执行该操作将永久删除缓存的图像记录！</string>
+    <string name="visualizer_title">音频可视化风格</string>
+    <string name="visualizer_summary">提供播放音乐时的音频可视化显示效果、风格</string>
+	<string name="widget_style_title">控件风格</string>
+    <string name="widget_style_summary">可选择窗口小部件的具体风格</string>
+    <string name="widget_style_dark">完全昏暗</string>
+    <string name="widget_style_light">整体光亮</string>
+
+    <!-- Theme layout Buttons -->
+    <string name="apply_theme">应用主题</string>
+    <string name="get_more_themes">下载更多主题</string>
+
+    <!-- Playlists menu -->
+    <string name="favorite">最喜爱的</string>
+    <string name="queue">音乐队列</string>
+    <string name="new_playlist">新建列表</string>
+    <string name="new_playlist_name_template">播放列表 <xliff:g id="number">%d</xliff:g></string>
+    <string name="save">保存</string>
+    <string name="overwrite">覆盖</string>
+
+    <!-- Tabs -->
+    <string name="tab_recent">最近播放</string>
+    <string name="tab_artists">艺术家</string>
+    <string name="tab_albums">专辑唱片</string>
+    <string name="tab_songs">全部歌曲</string>
+    <string name="tab_playlists">播放列表</string>
+    <string name="tab_genres">音乐流派</string>
+    
+    <!-- Settings keys -->
+    <string name="key_themes" translatable="false">themepreview</string>
+    <string name="key_themes_package" translatable="false">themePackageName</string>
+    <string name="key_themes_preferences" translatable="false">themePrefences</string>
+    <string name="key_build_version" translatable="false">build_version</string>
+    <string name="key_tabs_enabled" translatable="false">tabs_enabled</string>
+    <string name="key_visualization_type" translatable="false">visualization_type</string>
+    <string name="key_widget_style" translatable="false">widget_type</string>
+    
+       <!-- Visualizations -->
+    <string name="visual_none">默认不显示</string>
+    <string name="visual_bargraph">矩形块叠加显示</string>
+    <string name="visual_solidbargraph">立体条形图风格</string>
+    <string name="visual_waveform">波浪图风格</string>
+
+    <!-- Something for help -->
+    <string name="error">很抱歉，出错误啦！</string>
+    <string name="exit_talking">再按一次返回键,可直接退出程序</string>
+    <string name="splan_songs">首歌曲</string>
+    <string name="all_add">已刷新乐库，共增添</string>
+    <string name="had_add">亲，您已刷新乐库！</string>
+    <string name="set_time">请输入睡眠时间的整分钟数(分)</string>
+    <string name="Search">搜索</string>
+    <string name="Yes">确定</string>
+    <string name="cancel">取消</string>
+    <string name="start">开启</string>
+    <string name="sorry_tell">很抱歉，设置的时间不能为空！</string>
+    <string name="should_time">很抱歉，设置的时间不能超过120分钟</string>
+    <string name="cannot_time">亲，睡眠定时不能重复设置哟！</string>
+    <string name="set_time_tittle">睡眠定时仅限第一次</string>
+    <string name="thanks_word">阅读完毕，感谢您对本软件的支持和使用！</string>
+    
+
+    <!-- External file dialog -->
+    <string name="play_external_question_msg">选择应用于: \n\n<b><xliff:g id="name">%s</xliff:g></b>的操作</string>
+    <string name="play_external_question_button_play">播放</string>
+    <string name="play_external_question_button_queue">队列</string>
+    <string name="play_external_question_button_cancel">取消</string>
+    <string name="play_external_error">无法播放文件</string>
+    
+    <!-- Titles for Albums/Artist screens -->
+    <string name="artist_page_title">" 艺术家: "</string>
+    <string name="album_page_title">" 专辑: "</string>
+
+</resources>

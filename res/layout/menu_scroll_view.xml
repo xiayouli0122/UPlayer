@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/desktop_wallpager"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/menu_bg"
+    android:orientation="vertical"
+     >
+     <include 
+         android:layout_width="fill_parent"
+         android:layout_height="46.0dip"
+         layout="@layout/topbar"/>
+	  
+    <LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:background="@drawable/menu_bg"
+        android:orientation="vertical">
+	  <RelativeLayout
+                android:id="@+id/desktop_top_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/desktop_avatar"
+                    android:layout_width="90dip"
+                    android:layout_height="90dip"
+                    android:layout_margin="8dip"
+                    android:src="@drawable/app_icon" />
+
+                <TextView
+                    android:id="@+id/desktop_name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:layout_toRightOf="@+id/desktop_avatar"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/desktop_sig"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/desktop_name"
+                    android:layout_alignRight="@+id/desktop_name"
+                    android:layout_below="@+id/desktop_name"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textColor="#7fffffff"
+                    android:textSize="12sp" />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1px"
+                    android:layout_below="@+id/desktop_avatar"
+                    android:background="@drawable/menu_fold" />
+            </RelativeLayout>
+    	<ListView 
+    	    android:id="@+id/menuList"
+    	    android:visibility="invisible"
+    	    android:layout_width="fill_parent"
+    	    android:layout_height="fill_parent"
+    	    android:scrollingCache="false"
+    	    android:fadingEdge="none"
+    	    android:divider="@drawable/menu_line"
+    	    android:cacheColorHint="#000000"
+    	    android:listSelector="@drawable/menu_item_bg"
+    	   	/>
+     
+    </LinearLayout>
+    	
+    	<com.xiaohan.ihappy.helpers.utils.MenuHorizontalScrollView
+        	android:id="@+id/mScrollView"
+	        android:layout_width="fill_parent" 
+	        android:layout_height="fill_parent" 
+	        android:background="#00ffffff" 
+	        android:fadingEdge="none" 
+	        android:scrollbars="none"
+	        >
+       
+	        <LinearLayout 
+	            android:id="@+id/top"
+	            android:layout_height="fill_parent" 
+	            android:layout_width="fill_parent"
+	            android:orientation="horizontal" 
+	            android:background="#00ffffff" 
+	           > 
+	     
+	        </LinearLayout> 
+    	</com.xiaohan.ihappy.helpers.utils.MenuHorizontalScrollView>
+    
+</FrameLayout>
+  
