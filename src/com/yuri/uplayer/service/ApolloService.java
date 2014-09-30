@@ -1442,7 +1442,7 @@ public class ApolloService extends Service implements GetBitmapTask.OnBitmapRead
 //                .getActivity(this, 0, new Intent("com.yuri.uplayer.PLAYBACK_VIEWER")
 //                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK), 0);
         status.contentIntent = PendingIntent
-                .getActivity(this, 0, new Intent("com.andrew.apolloMod.PLAYBACK_VIEWER")
+                .getActivity(this, 0, new Intent("com.yuri.uplayer.PLAYBACK_VIEWER")
                         .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .putExtra("started_from", "NOTIF_SERVICE"), PendingIntent.FLAG_CANCEL_CURRENT);
         startForeground(PLAYBACKSERVICE_STATUS, status);
