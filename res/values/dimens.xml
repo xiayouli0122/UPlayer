@@ -11,7 +11,7 @@
     <!-- Tabs -->
     <dimen name="tab_padding_top_bottom">6dp</dimen>
     <dimen name="tab_padding_left_right">40dp</dimen>
-    <dimen name="tab_height">30dp</dimen>
+    <dimen name="tab_height">40dp</dimen>
 
     <!-- Bottom ActionBar -->
     <dimen name="bottom_action_bar_height">48dp</dimen>
@@ -47,7 +47,7 @@
     <dimen name="quick_context_padding_right">4dp</dimen>
     <dimen name="quick_context_line_height">30dp</dimen>
     <dimen name="quick_context_line_width">1dp</dimen>
-    <dimen name="quick_context_margin_right">5dp</dimen>
+    <dimen name="quick_context_margin_right">15dp</dimen>
 
     <!-- Nofication bar button -->
     <dimen name="status_bar_button_width_height">48dp</dimen>

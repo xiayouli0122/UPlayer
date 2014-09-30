@@ -23,6 +23,7 @@ import java.util.Random;
 import java.util.Vector;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -51,6 +52,7 @@ import android.media.RemoteControlClient;
 import android.media.RemoteControlClient.MetadataEditor;
 import android.media.audiofx.AudioEffect;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -90,6 +92,7 @@ import static com.yuri.uplayer.Constants.SIZE_THUMB;
 import static com.yuri.uplayer.Constants.SRC_FIRST_AVAILABLE;
 import static com.yuri.uplayer.Constants.TYPE_ALBUM;
 
+@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 public class ApolloService extends Service implements GetBitmapTask.OnBitmapReadyListener {
     /**
      * used to specify whether enqueue() should start playing the new list of
@@ -116,31 +119,31 @@ public class ApolloService extends Service implements GetBitmapTask.OnBitmapRead
 
     public static final int REPEAT_ALL = 2;
 
-    public static final String APOLLO_PACKAGE_NAME = "com.xiaohan.ihappy";
+    public static final String APOLLO_PACKAGE_NAME = "com.yuri.uplayer";
 
     public static final String MUSIC_PACKAGE_NAME = "com.android.music";
 
-    public static final String PLAYSTATE_CHANGED = "com.xiaohan.ihappy.playstatechanged";
+    public static final String PLAYSTATE_CHANGED = "com.yuri.uplayer.playstatechanged";
 
-    public static final String META_CHANGED = "com.xiaohan.ihappy.metachanged";
+    public static final String META_CHANGED = "com.yuri.uplayer.metachanged";
 
-    public static final String FAVORITE_CHANGED = "com.xiaohan.ihappy.favoritechanged";
+    public static final String FAVORITE_CHANGED = "com.yuri.uplayer.favoritechanged";
 
-    public static final String QUEUE_CHANGED = "com.xiaohan.ihappy.queuechanged";
+    public static final String QUEUE_CHANGED = "com.yuri.uplayer.queuechanged";
 
-    public static final String REPEATMODE_CHANGED = "com.xiaohan.ihappy.repeatmodechanged";
+    public static final String REPEATMODE_CHANGED = "com.yuri.uplayer.repeatmodechanged";
 
-    public static final String SHUFFLEMODE_CHANGED = "com.xiaohan.ihappy.shufflemodechanged";
+    public static final String SHUFFLEMODE_CHANGED = "com.yuri.uplayer.shufflemodechanged";
 
-    public static final String PROGRESSBAR_CHANGED = "com.xiaohan.ihappy.progressbarchnaged";
+    public static final String PROGRESSBAR_CHANGED = "com.yuri.uplayer.progressbarchnaged";
 
-    public static final String REFRESH_PROGRESSBAR = "com.xiaohan.ihappy.refreshprogessbar";
+    public static final String REFRESH_PROGRESSBAR = "com.yuri.uplayer.refreshprogessbar";
 
-    public static final String CYCLEREPEAT_ACTION = "com.xiaohan.ihappy.musicservicecommand.cyclerepeat";
+    public static final String CYCLEREPEAT_ACTION = "com.yuri.uplayer.musicservicecommand.cyclerepeat";
 
-    public static final String TOGGLESHUFFLE_ACTION = "com.xiaohan.ihappy.musicservicecommand.toggleshuffle";
+    public static final String TOGGLESHUFFLE_ACTION = "com.yuri.uplayer.musicservicecommand.toggleshuffle";
 
-    public static final String SERVICECMD = "com.xiaohan.ihappy.musicservicecommand";
+    public static final String SERVICECMD = "com.yuri.uplayer.musicservicecommand";
 
     public static final String CMDNAME = "command";
 
@@ -164,13 +167,13 @@ public class ApolloService extends Service implements GetBitmapTask.OnBitmapRead
 
     public static final String CMDTOGGLESHUFFLE = "toggleshuffle";
 
-    public static final String TOGGLEPAUSE_ACTION = "com.xiaohan.ihappy.musicservicecommand.togglepause";
+    public static final String TOGGLEPAUSE_ACTION = "com.yuri.uplayer.musicservicecommand.togglepause";
 
-    public static final String PAUSE_ACTION = "com.xiaohan.ihappy.musicservicecommand.pause";
+    public static final String PAUSE_ACTION = "com.yuri.uplayer.musicservicecommand.pause";
 
-    public static final String PREVIOUS_ACTION = "com.xiaohan.ihappy.musicservicecommand.previous";
+    public static final String PREVIOUS_ACTION = "com.yuri.uplayer.musicservicecommand.previous";
 
-    public static final String NEXT_ACTION = "com.xiaohan.ihappy.musicservicecommand.next";
+    public static final String NEXT_ACTION = "com.yuri.uplayer.musicservicecommand.next";
 
     private static final int TRACK_ENDED = 1;
 
@@ -278,7 +281,7 @@ public class ApolloService extends Service implements GetBitmapTask.OnBitmapRead
     
     private GetBitmapTask mAlbumBitmapTask;
 
-    public static final String UPDATE_LRC_ACTION = "com.xiaohan.ihappy.musicservicecommand.updatelrc";
+    public static final String UPDATE_LRC_ACTION = "com.yuri.uplayer.musicservicecommand.updatelrc";
     
     // interval after which we stop the service when idle
     //一分半钟后停止service服务，并且回收相应资源
@@ -961,8 +964,8 @@ public class ApolloService extends Service implements GetBitmapTask.OnBitmapRead
      * - Integer: the database row ID "artist" - String: the name of the artist
      * "album" - String: the name of the album "track" - String: the name of the
      * track The intent has an action that is one of
-     * "com.xiaohan.ihappy.metachanged" "com.xiaohan.ihappy.queuechanged",
-     * "com.xiaohan.ihappy.playbackcomplete" "com.xiaohan.ihappy.playstatechanged"
+     * "com.yuri.uplayer.metachanged" "com.yuri.uplayer.queuechanged",
+     * "com.yuri.uplayer.playbackcomplete" "com.yuri.uplayer.playstatechanged"
      * respectively indicating that a new track has started playing, that the
      * playback queue has changed, that playback has stopped because the last
      * file in the list has been played, or that the play-state changed
@@ -1366,15 +1369,17 @@ public class ApolloService extends Service implements GetBitmapTask.OnBitmapRead
         }
     }
 
-    private void updateNotification() {
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+	private void updateNotification() {
         Bitmap b = getAlbumBitmap();
         RemoteViews views = new RemoteViews(getPackageName(), R.layout.status_bar);
+        RemoteViews bigViews = new RemoteViews(getPackageName(), R.layout.status_bar_expanded);
    
         if (b != null) {
             views.setViewVisibility(R.id.status_bar_icon, View.GONE);
             views.setViewVisibility(R.id.status_bar_album_art, View.VISIBLE);
             views.setImageViewBitmap(R.id.status_bar_album_art, b);
-          
+            bigViews.setImageViewBitmap(R.id.status_bar_album_art, b);
         } else {
             views.setViewVisibility(R.id.status_bar_icon, View.VISIBLE);
             views.setViewVisibility(R.id.status_bar_album_art, View.GONE);
@@ -1392,6 +1397,7 @@ public class ApolloService extends Service implements GetBitmapTask.OnBitmapRead
                 1, mediaButtonIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         views.setOnClickPendingIntent(R.id.status_bar_play, mediaPendingIntent);
+        bigViews.setOnClickPendingIntent(R.id.status_bar_play, mediaPendingIntent);
 
         mediaButtonIntent.putExtra(CMDNOTIF, 2);
         mediaKey = new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MEDIA_NEXT);
@@ -1400,32 +1406,45 @@ public class ApolloService extends Service implements GetBitmapTask.OnBitmapRead
                 mediaButtonIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         
         views.setOnClickPendingIntent(R.id.status_bar_next, mediaPendingIntent);
+        bigViews.setOnClickPendingIntent(R.id.status_bar_next, mediaPendingIntent);
 
         mediaButtonIntent.putExtra(CMDNOTIF, 4);
         mediaKey = new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MEDIA_PREVIOUS);
         mediaButtonIntent.putExtra(Intent.EXTRA_KEY_EVENT, mediaKey);
         mediaPendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 4,
                 mediaButtonIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        views.setOnClickPendingIntent(R.id.status_bar_prev, mediaPendingIntent);
+        bigViews.setOnClickPendingIntent(R.id.status_bar_prev, mediaPendingIntent);
    
-//        mediaButtonIntent.putExtra(CMDNOTIF, 3);
-//        mediaKey = new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MEDIA_STOP);
-//        mediaButtonIntent.putExtra(Intent.EXTRA_KEY_EVENT, mediaKey);
-//        mediaPendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 3,
-//                mediaButtonIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-//
-//        views.setOnClickPendingIntent(R.id.status_bar_collapse, mediaPendingIntent);
-        views.setImageViewResource(R.id.status_bar_play, R.drawable.apollo_holo_dark_pause);
-        views.setTextViewText(R.id.status_bar_track_name, getTrackName());
-        views.setTextViewText(R.id.status_bar_artist_name, getArtistName());
+        mediaButtonIntent.putExtra(CMDNOTIF, 3);
+        mediaKey = new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MEDIA_STOP);
+        mediaButtonIntent.putExtra(Intent.EXTRA_KEY_EVENT, mediaKey);
+        mediaPendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 3,
+                mediaButtonIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        status = new Notification.Builder(this).getNotification();
+        views.setOnClickPendingIntent(R.id.status_bar_collapse, mediaPendingIntent);
+        bigViews.setOnClickPendingIntent(R.id.status_bar_collapse, mediaPendingIntent);
+        
+        views.setImageViewResource(R.id.status_bar_play, R.drawable.apollo_holo_dark_pause);
+        bigViews.setImageViewResource(R.id.status_bar_play, R.drawable.apollo_holo_dark_pause);
+        
+        views.setTextViewText(R.id.status_bar_track_name, getTrackName());
+        bigViews.setTextViewText(R.id.status_bar_track_name, getTrackName());
+        
+        views.setTextViewText(R.id.status_bar_artist_name, getArtistName());
+        bigViews.setTextViewText(R.id.status_bar_artist_name, getArtistName());
+
+        status = new Notification.Builder(this).build();
         status.contentView = views;
+        status.bigContentView = bigViews;
         status.flags = Notification.FLAG_ONGOING_EVENT;
         status.icon = R.drawable.stat_notify_music;
+//        status.contentIntent = PendingIntent
+//                .getActivity(this, 0, new Intent("com.yuri.uplayer.PLAYBACK_VIEWER")
+//                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK), 0);
         status.contentIntent = PendingIntent
-                .getActivity(this, 0, new Intent("com.xiaohan.ihappy.PLAYBACK_VIEWER")
-                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK), 0);
+                .getActivity(this, 0, new Intent("com.andrew.apolloMod.PLAYBACK_VIEWER")
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .putExtra("started_from", "NOTIF_SERVICE"), PendingIntent.FLAG_CANCEL_CURRENT);
         startForeground(PLAYBACKSERVICE_STATUS, status);
     }
     
@@ -1675,9 +1694,9 @@ public class ApolloService extends Service implements GetBitmapTask.OnBitmapRead
             status.contentView.setImageViewResource(R.id.status_bar_play,
                     mIsSupposedToBePlaying ? R.drawable.apollo_holo_dark_play
                             : R.drawable.apollo_holo_dark_pause);
-//            status.contentView.setImageViewResource(R.id.status_bar_play,
-//                    mIsSupposedToBePlaying ? R.drawable.apollo_holo_dark_play
-//                            : R.drawable.apollo_holo_dark_pause);
+            status.bigContentView.setImageViewResource(R.id.status_bar_play,
+                    mIsSupposedToBePlaying ? R.drawable.apollo_holo_dark_play
+                            : R.drawable.apollo_holo_dark_pause);
             mManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
             mManager.notify(PLAYBACKSERVICE_STATUS, status);
         }

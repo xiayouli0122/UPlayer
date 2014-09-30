@@ -11,7 +11,7 @@
                 android:summary="@string/apollo_themes"
                 android:title="@string/select_theme" />
 
-            <com.xiaohan.ihappy.preferences.ThemePreview
+            <com.yuri.uplayer.preferences.ThemePreview
                 android:key="@string/key_themes"
                 android:layout="@layout/theme_preview" />
         </PreferenceScreen>

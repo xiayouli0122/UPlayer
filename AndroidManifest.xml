@@ -101,7 +101,7 @@
                 <data android:mimeType="application/itunes" />
             </intent-filter>
             <intent-filter>
-                <action android:name="com.xiaohan.ihappy.PLAYBACK_VIEWER" />
+                <action android:name="com.yuri.uplayer.PLAYBACK_VIEWER" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -166,12 +166,12 @@
             android:label="@string/rename_playlist"
             android:theme="@android:style/Theme.Holo.Light.Dialog.NoActionBar" >
             <intent-filter>
-                <action android:name="com.xiaohan.ihappy.CREATE_PLAYLIST" />
+                <action android:name="com.yuri.uplayer.CREATE_PLAYLIST" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <intent-filter>
-                <action android:name="com.xiaohan.ihappy.RENAME_PLAYLIST" />
+                <action android:name="com.yuri.uplayer.RENAME_PLAYLIST" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -181,7 +181,7 @@
             android:icon="@drawable/app_icon"
             android:theme="@android:style/Theme.Holo.Light.Dialog.NoActionBar" >
             <intent-filter>
-                <action android:name="com.xiaohan.ihappy.ADD_TO_PLAYLIST" />
+                <action android:name="com.yuri.uplayer.ADD_TO_PLAYLIST" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
        

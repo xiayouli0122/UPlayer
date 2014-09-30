@@ -18,7 +18,7 @@ import android.widget.Button;
 
 import com.yuri.uplayer.R;
 import com.yuri.uplayer.helpers.utils.VaulePreference;
-//import com.xiaohan.ihappy.service.ApolloService;
+//import com.yuri.uplayer.service.ApolloService;
 
 
 

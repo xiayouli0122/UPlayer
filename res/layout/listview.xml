@@ -16,10 +16,46 @@
         android:layout_weight="1"
         android:cacheColorHint="@color/transparent"
         android:drawSelectorOnTop="false"
-        android:fastScrollAlwaysVisible="true"
+        android:fastScrollAlwaysVisible="false"
         android:fastScrollEnabled="true"
+        android:scrollbarStyle="outsideOverlay"
         android:listSelector="@drawable/holo_selector"
-        android:paddingRight="@dimen/fast_scroll_padding_right" />
+        android:paddingRight="0dp" />
+    
+<!--     <FrameLayout -->
+<!--         android:layout_width="match_parent" -->
+<!--         android:layout_height="0dp" -->
+<!--         android:layout_weight="1" -->
+<!--         > -->
+
+<!--         <ListView -->
+<!--         android:id="@android:id/list" -->
+<!--         android:layout_width="match_parent" -->
+<!--         android:layout_height="match_parent" -->
+<!--         android:cacheColorHint="@color/transparent" -->
+<!--         android:drawSelectorOnTop="false" -->
+<!--         android:fastScrollAlwaysVisible="false" -->
+<!--         android:fastScrollEnabled="false" -->
+<!--         android:listSelector="@drawable/holo_selector" -->
+<!--         /> -->
+
+<!--         <TextView -->
+<!--             android:id="@+id/sidebar_tv_tip" -->
+<!--             android:layout_width="80.0dip" -->
+<!--             android:layout_height="80.0dip" -->
+<!--             android:layout_gravity="center" -->
+<!--             android:background="#33000000" -->
+<!--             android:gravity="center" -->
+<!--             android:textColor="#000000" -->
+<!--             android:textSize="30.0dip" -->
+<!--             android:visibility="invisible" /> -->
+
+<!--         <com.yuri.uplayer.views.SideBar -->
+<!--             android:id="@+id/sidebar" -->
+<!--             android:layout_width="30.0dip" -->
+<!--             android:layout_height="fill_parent" -->
+<!--             android:layout_gravity="right|center" /> -->
+<!--     </FrameLayout> -->
 
     <include
         android:id="@+id/empty_view"

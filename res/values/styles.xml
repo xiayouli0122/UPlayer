@@ -298,14 +298,12 @@
         <item name="android:src">@drawable/apollo_holo_light_overflow</item>
     </style>
     
-    
-    
 	
 	  <style name="topbar_bg">
         <item name="android:gravity">center_vertical</item>
         <item name="android:background">@drawable/main_navigation_background</item>
         <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">46.0dip</item>
+        <item name="android:layout_height">48.0dip</item>
     </style>
     
     <style name="topbar_text">

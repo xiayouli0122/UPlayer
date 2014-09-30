@@ -38,10 +38,10 @@
             android:id="@+id/status_bar_artist_name"
             style="@style/StatusBarText" />
     </LinearLayout>
-     <ImageButton 
-	            android:id="@+id/status_bar_prev" 
-	             android:src="@drawable/apollo_holo_dark_prev"
-	            style="@style/StatusBarButton" />
+<!--      <ImageButton  -->
+<!-- 	            android:id="@+id/status_bar_prev"  -->
+<!-- 	             android:src="@drawable/apollo_holo_dark_prev" -->
+<!-- 	            style="@style/StatusBarButton" /> -->
     
     <ImageButton
         android:id="@+id/status_bar_play"
@@ -54,9 +54,9 @@
         android:src="@drawable/apollo_holo_dark_next"
         android:contentDescription="@string/cd_next" />
 
-   <!--  <ImageButton
+    <ImageButton
         android:id="@+id/status_bar_collapse"
         style="@style/StatusBarButton"
-        android:src="@drawable/apollo_holo_dark_notifiation_bar_collapse" />-->
+        android:src="@drawable/apollo_holo_dark_notifiation_bar_collapse" />
 
 </LinearLayout>

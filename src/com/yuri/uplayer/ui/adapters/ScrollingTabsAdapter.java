@@ -12,13 +12,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 
+import com.yuri.uplayer.Log;
 import com.yuri.uplayer.R;
 import com.yuri.uplayer.helpers.utils.ThemeUtils;
 
 import static com.yuri.uplayer.Constants.TABS_ENABLED;
 
 public class ScrollingTabsAdapter implements TabAdapter {
-
+	private static final String TAG = ScrollingTabsAdapter.class.getSimpleName();
     private final Activity activity;
 
     public ScrollingTabsAdapter(Activity act) {
@@ -27,6 +28,7 @@ public class ScrollingTabsAdapter implements TabAdapter {
 
     @Override
     public View getView(int position) {
+    	Log.d(TAG, "getView.position:" + position);
         LayoutInflater inflater = activity.getLayoutInflater();
         final Button tab = (Button)inflater.inflate(R.layout.tabs, null);
 

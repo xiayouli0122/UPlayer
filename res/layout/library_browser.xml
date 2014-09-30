@@ -1,30 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
 
-    <com.yuri.uplayer.ui.widgets.ScrollableTabView
-        android:id="@+id/scrollingTabs"
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/tab_height"/>
+        android:layout_height="match_parent" >
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/scrollingTabs" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/bottom_action_bar_height"
-        android:layout_alignParentBottom="true" >
-        
-        <fragment android:name="com.yuri.uplayer.ui.fragments.BottomActionBarFragment"
-            android:id="@+id/bottomactionbar_new"
-            android:layout_weight="1"
-			android:layout_width="match_parent"
-            android:layout_height="match_parent" /> 
+            <com.yuri.uplayer.ui.widgets.ScrollableTabView
+                android:id="@+id/scrollingTabs"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height" 
+                android:layout_alignParentTop="true" 
+                />
 
-    </LinearLayout>
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/scrollingTabs" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bottom_action_bar_height"
+                android:layout_alignParentBottom="true" >
+
+                <fragment
+                    android:id="@+id/bottomactionbar_new"
+                    android:name="com.yuri.uplayer.ui.fragments.BottomActionBarFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_left_menu"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="left"
+            android:background="@drawable/menu_bg"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/desktop_top_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/desktop_avatar"
+                    android:layout_width="64dip"
+                    android:layout_height="64dip"
+                    android:layout_margin="8dip"
+                    android:src="@drawable/app_icon" />
+
+                <TextView
+                    android:id="@+id/desktop_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/desktop_avatar"
+                    android:layout_centerVertical="true"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/desktop_sig"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/desktop_name"
+                    android:layout_alignRight="@+id/desktop_name"
+                    android:layout_below="@+id/desktop_name"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textColor="#7fffffff"
+                    android:textSize="12sp" />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1px"
+                    android:layout_below="@+id/desktop_avatar"
+                    android:background="@drawable/menu_fold" />
+            </RelativeLayout>
+
+            <ListView
+                android:id="@+id/menuList"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:cacheColorHint="#000000"
+                android:divider="@drawable/menu_line"
+                android:fadingEdge="none"
+                android:listSelector="@drawable/menu_item_bg"
+                android:scrollingCache="false"
+                android:visibility="visible" />
+        </LinearLayout>
+    </android.support.v4.widget.DrawerLayout>
 
 </RelativeLayout>

@@ -1,8 +1,4 @@
-
 package com.yuri.uplayer.ui.fragments.list;
-
-
-
 
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.BroadcastReceiver;
@@ -36,6 +32,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.yuri.uplayer.Log;
 import com.yuri.uplayer.NowPlayingCursor;
 import com.yuri.uplayer.R;
 import com.yuri.uplayer.helpers.RefreshableFragment;
@@ -43,7 +40,8 @@ import com.yuri.uplayer.helpers.utils.ApolloUtils;
 import com.yuri.uplayer.helpers.utils.MusicUtils;
 import com.yuri.uplayer.service.ApolloService;
 import com.yuri.uplayer.ui.adapters.TrackAdapter;
-
+import com.yuri.uplayer.views.SideBar;
+import com.yuri.uplayer.views.SideBar.OnTouchingLetterChangedListener;
 
 import static com.yuri.uplayer.Constants.EXTERNAL;
 import static com.yuri.uplayer.Constants.INTENT_ADD_TO_PLAYLIST;
@@ -57,20 +55,14 @@ import static com.yuri.uplayer.Constants.PLAYLIST_QUEUE;
  */
 public class TracksFragment extends RefreshableFragment implements LoaderCallbacks<Cursor>,
         OnItemClickListener {
+	private static final String TAG = TracksFragment.class.getSimpleName();
 
-    // Adapter
     private TrackAdapter mTrackAdapter;
-
-    // ListView
     public static ListView mListView;
-
-    // Cursor
+    
     private Cursor mCursor;
 
-    // Playlist ID
     private long mPlaylistId = -1;
-
-    // Selected position
     private int mSelectedPosition;
 
     // Used to set ringtone
@@ -78,15 +70,10 @@ public class TracksFragment extends RefreshableFragment implements LoaderCallbac
 
     // Options
     private final int PLAY_SELECTION = 6;
-
     private final int USE_AS_RINGTONE = 7;
-
     private final int ADD_TO_PLAYLIST = 8;
-    
     private final int REAL_REMOVE = 9;
-
     private final int SEARCH = 10;
-
     private final int REMOVE = 11;
 
     private boolean mEditMode = false;
@@ -98,14 +85,15 @@ public class TracksFragment extends RefreshableFragment implements LoaderCallbac
     public TracksFragment() {
     }
 
-    public TracksFragment(Bundle args) {
-        setArguments(args);
+    public TracksFragment(Bundle bundle) {
+    	Log.d(TAG, "TracksFragment.bundle:" + bundle);
+        setArguments(bundle);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        Log.d(TAG, "onActivityCreated");
         isEditMode();
 
         // Adapter
@@ -129,11 +117,12 @@ public class TracksFragment extends RefreshableFragment implements LoaderCallbac
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.listview, container, false);
-        mListView = (ListView)root.findViewById(android.R.id.list);
+    	Log.d(TAG, "onCreateView");
+        View rootView = inflater.inflate(R.layout.listview, container, false);
+        mListView = (ListView) rootView.findViewById(android.R.id.list);
 
         // Align the track list with the header, in other words,OCD.
-        TextView mHeader = (TextView)root.findViewById(R.id.title);
+        TextView mHeader = (TextView)rootView.findViewById(R.id.title);
         int eight = (int)getActivity().getResources().getDimension(
                 R.dimen.list_separator_padding_left_right);
         mHeader.setPadding(eight, 0, 0, 0);
@@ -142,7 +131,7 @@ public class TracksFragment extends RefreshableFragment implements LoaderCallbac
         String header = getActivity().getResources().getString(R.string.track_header);
         int left = getActivity().getResources().getInteger(R.integer.listview_padding_left);
         int right = getActivity().getResources().getInteger(R.integer.listview_padding_right);
-        ApolloUtils.listHeader(this, root, header);
+        ApolloUtils.listHeader(this, rootView, header);
         ApolloUtils.setListPadding(this, mListView, left, 0, right, 0);
 
         // Hide the extra spacing from the Bottom ActionBar in the queue
@@ -153,16 +142,17 @@ public class TracksFragment extends RefreshableFragment implements LoaderCallbac
             if (Audio.Playlists.CONTENT_TYPE.equals(mimeType)) {
                 switch ((int)mPlaylistId) {
                     case (int)PLAYLIST_QUEUE:
-                        LinearLayout emptyness = (LinearLayout)root.findViewById(R.id.empty_view);
+                        LinearLayout emptyness = (LinearLayout)rootView.findViewById(R.id.empty_view);
                         emptyness.setVisibility(View.GONE);
                 }
             }
         }
-        return root;
+        return rootView;
     }
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+    	Log.d(TAG, "onCreateLoader.id:" + id);
         String[] projection = new String[] {
                 BaseColumns._ID, MediaColumns.TITLE, AudioColumns.ALBUM, AudioColumns.ARTIST
         };
@@ -172,6 +162,7 @@ public class TracksFragment extends RefreshableFragment implements LoaderCallbac
         Uri uri = Audio.Media.EXTERNAL_CONTENT_URI;
         if (getArguments() != null) {
             mPlaylistId = getArguments().getLong(BaseColumns._ID);
+            Log.d(TAG, "onCreateLoader.mPlaylistId:" + mPlaylistId);
             String mimeType = getArguments().getString(MIME_TYPE);
             if (Audio.Playlists.CONTENT_TYPE.equals(mimeType)) {
                 where = new StringBuilder();
@@ -181,6 +172,7 @@ public class TracksFragment extends RefreshableFragment implements LoaderCallbac
                     case (int)PLAYLIST_QUEUE:
                         uri = Audio.Media.EXTERNAL_CONTENT_URI;
                         long[] mNowPlaying = MusicUtils.getQueue();
+                        Log.d(TAG, "onCreateLoader.mNowPlaying.length:" + mNowPlaying.length);
                         if (mNowPlaying.length == 0)
                             return null;
                         where = new StringBuilder();
@@ -244,11 +236,13 @@ public class TracksFragment extends RefreshableFragment implements LoaderCallbac
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         // Check for database errors
-    	
         if (data == null) { 
+        	Log.d(TAG, "onLoadFinished.data is null");
             return;
         }
-       
+        
+        Log.d(TAG, "onLoadFinished:" + data.getCount());
+        
         if (getArguments() != null
                 && Playlists.CONTENT_TYPE.equals(getArguments().getString(MIME_TYPE))
                 && (getArguments().getLong(BaseColumns._ID) >= 0 || getArguments().getLong(

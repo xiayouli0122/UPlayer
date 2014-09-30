@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SimpleCursorAdapter;
 
+import com.yuri.uplayer.Log;
 import com.yuri.uplayer.R;
 import com.yuri.uplayer.ui.fragments.list.PlaylistsFragment;
 import com.yuri.uplayer.views.ViewHolderList;
@@ -20,7 +21,7 @@ import com.yuri.uplayer.views.ViewHolderList;
  * @author Andrew Neal
  */
 public class PlaylistAdapter extends SimpleCursorAdapter {
-
+	private static final String TAG = PlaylistAdapter.class.getSimpleName();
     private WeakReference<ViewHolderList> holderReference;
     
     private Context mContext;
@@ -49,7 +50,6 @@ public class PlaylistAdapter extends SimpleCursorAdapter {
         final ViewHolderList viewholder;
 
         if (view != null) {
-
             viewholder = new ViewHolderList(view);
             holderReference = new WeakReference<ViewHolderList>(viewholder);
             view.setTag(holderReference.get());
@@ -59,16 +59,15 @@ public class PlaylistAdapter extends SimpleCursorAdapter {
         }
 
         String playlist_name = mCursor.getString(PlaylistsFragment.mPlaylistNameIndex);
-        holderReference.get().mViewHolderLineOne.setText(playlist_name);
+        Log.d(TAG, "getView.playlist_name:" + playlist_name);
+		holderReference.get().mViewHolderLineOne.setText(playlist_name);
 
-        // Helps center the text in the Playlist tab
-        int left = mContext.getResources().getDimensionPixelSize(
-                R.dimen.listview_items_padding_left_top);
-        holderReference.get().mViewHolderLineOne.setPadding(left, 40, 0, 0);
-
-        holderReference.get().mViewHolderImage.setVisibility(View.GONE);
-
-        holderReference.get().mQuickContext.setOnClickListener(showContextMenu);
+		// Helps center the text in the Playlist tab
+		int left = mContext.getResources().getDimensionPixelSize(
+				R.dimen.listview_items_padding_left_top);
+		holderReference.get().mViewHolderLineOne.setPadding(left, 40, 0, 0);
+		holderReference.get().mViewHolderImage.setVisibility(View.GONE);
+		holderReference.get().mQuickContext.setOnClickListener(showContextMenu);
         return view;
     }
 

@@ -28,6 +28,7 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.yuri.uplayer.Log;
 import com.yuri.uplayer.R;
 import com.yuri.uplayer.activities.TracksBrowser;
 import com.yuri.uplayer.helpers.utils.MusicUtils;
@@ -43,24 +44,18 @@ import static com.yuri.uplayer.Constants.PLAYLIST_NAME;
  */
 public class PlaylistsFragment extends Fragment implements LoaderCallbacks<Cursor>,
         OnItemClickListener {
-
-    // Adapter
+	private static final String TAG = PlaylistsFragment.class.getSimpleName();
+	
     private PlaylistAdapter mPlaylistAdapter;
-
-    // ListView
     private ListView mListView;
 
-    // Cursor
     private Cursor mCursor;
 
-    // Current playlist Id
     private String mCurrentPlaylistId;
 
     // Options
     private static final int PLAY_SELECTION = 11;
-
     private static final int DELETE_PLAYLIST = 12;
-
     private static final int RENAME_PLAYLIST = 13;
 
     // Aduio columns
@@ -96,12 +91,17 @@ public class PlaylistsFragment extends Fragment implements LoaderCallbacks<Curso
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+    	StringBuilder where = new StringBuilder();
+		where.append(MediaStore.Audio.Playlists.NAME + " != ''");
+		
+		String selection = where.toString();
+		
         String[] projection = new String[] {
                 BaseColumns._ID, PlaylistsColumns.NAME
         };
         Uri uri = Audio.Playlists.EXTERNAL_CONTENT_URI;
         String sortOrder = Audio.Playlists.DEFAULT_SORT_ORDER;
-        return new CursorLoader(getActivity(), uri, projection, null, null, sortOrder);
+        return new CursorLoader(getActivity(), uri, projection, selection, null, sortOrder);
     }
 
     @Override
@@ -110,7 +110,8 @@ public class PlaylistsFragment extends Fragment implements LoaderCallbacks<Curso
         if (data == null) {
             return;
         }
-
+        Log.d(TAG, "onLoadFinished.count:" + data.getCount());
+        
         mPlaylistIdIndex = data.getColumnIndexOrThrow(BaseColumns._ID);
         mPlaylistNameIndex = data.getColumnIndexOrThrow(PlaylistsColumns.NAME);
         mPlaylistAdapter.changeCursor(data);
