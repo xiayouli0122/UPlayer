@@ -85,7 +85,7 @@ public class AlbumsFragment extends Fragment implements LoaderCallbacks<Cursor>,
 //        mGridView.setAdapter(mAlbumAdapter);
         
         //
-//        mListView.setOnCreateContextMenuListener(this);
+        mListView.setOnCreateContextMenuListener(this);
         mListView.setOnItemClickListener(this);
         mListView.setTextFilterEnabled(true);
         mListView.setAdapter(mAlbumAdapter);
