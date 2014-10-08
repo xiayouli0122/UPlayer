@@ -24,6 +24,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import com.yuri.uplayer.R;
 import com.yuri.uplayer.activities.TracksBrowser;
@@ -48,6 +49,7 @@ public class ArtistsFragment extends Fragment implements LoaderCallbacks<Cursor>
 
     // GridView
     private GridView mGridView;
+    private ListView mListView;
 
     // Cursor
     private Cursor mCursor;
@@ -79,12 +81,17 @@ public class ArtistsFragment extends Fragment implements LoaderCallbacks<Cursor>
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         // ArtistAdapter
-        mArtistAdapter = new ArtistAdapter(getActivity(), R.layout.gridview_items, null,
+        mArtistAdapter = new ArtistAdapter(getActivity(), R.layout.listview_items, null,
                 new String[] {}, new int[] {}, 0);
-        mGridView.setOnCreateContextMenuListener(this);
-        mGridView.setOnItemClickListener(this);
-        mGridView.setAdapter(mArtistAdapter);
-        mGridView.setTextFilterEnabled(true);
+//        mGridView.setOnCreateContextMenuListener(this);
+//        mGridView.setOnItemClickListener(this);
+//        mGridView.setAdapter(mArtistAdapter);
+//        mGridView.setTextFilterEnabled(true);
+        
+        mListView.setOnCreateContextMenuListener(this);
+        mListView.setOnItemClickListener(this);
+        mListView.setTextFilterEnabled(true);
+        mListView.setAdapter(mArtistAdapter);
 
         // Important!
         getLoaderManager().initLoader(0, null, this);
@@ -92,8 +99,11 @@ public class ArtistsFragment extends Fragment implements LoaderCallbacks<Cursor>
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.gridview, container, false);
-        mGridView = ((GridView)root.findViewById(R.id.gridview));
+//        View root = inflater.inflate(R.layout.gridview, container, false);
+//        mGridView = ((GridView)root.findViewById(R.id.gridview));
+        
+        View root = inflater.inflate(R.layout.listview, container, false);
+        mListView = (ListView)root.findViewById(android.R.id.list);
         return root;
     }
 
@@ -210,7 +220,7 @@ public class ArtistsFragment extends Fragment implements LoaderCallbacks<Cursor>
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (mGridView != null) {
+            if (mListView != null) {
                 mArtistAdapter.notifyDataSetChanged();
             }
         }

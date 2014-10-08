@@ -28,7 +28,6 @@
         <item>@string/sm_main</item>
         <item>@string/sm_eqalizer</item>
        <item>@string/sm_other_setting</item>
-        <item>@string/sm_local_search</item>
         <item>@string/sm_shuffle_all</item>
         <item>@string/sm_refresh_music</item>
         <item>@string/about</item>

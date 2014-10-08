@@ -13,7 +13,7 @@ public class SlideMenuItem {
 	// 抽屉菜单列表的图标引入
 	public static final int[] SLIDE_MENU_DEFAULT_ICON_IDS = {
 			R.drawable.person_news_press, R.drawable.menu_icon_effect,
-			R.drawable.menu_icon_set, R.drawable.menu_icon_find_music,
+			R.drawable.menu_icon_set,
 			R.drawable.menu_icon_playmode, R.drawable.menu_icon_refresh_lib,
 			R.drawable.menu_icon_about, R.drawable.menu_icon_exit };
 

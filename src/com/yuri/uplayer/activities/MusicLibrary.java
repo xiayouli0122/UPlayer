@@ -38,12 +38,16 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.SearchView;
+import android.widget.SearchView.OnQueryTextListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -71,7 +75,7 @@ import com.yuri.uplayer.ui.widgets.ScrollableTabView;
  * @Note This is the "holder" for all of the tabs
  */
 public class MusicLibrary extends Activity implements ServiceConnection,
-		OnItemClickListener {
+		OnItemClickListener, OnQueryTextListener {
 	private static final String TAG = MusicLibrary.class.getSimpleName();
 	
 	private ServiceToken mToken;
@@ -83,6 +87,8 @@ public class MusicLibrary extends Activity implements ServiceConnection,
 
 	private DrawerLayout mDrawerLayout;
 	private ActionBarDrawerToggle mDrawerToggle;
+	
+	private SearchView mSearchView;
 
 	@Override
 	protected void onCreate(Bundle icicle) {
@@ -320,6 +326,52 @@ public class MusicLibrary extends Activity implements ServiceConnection,
 		actBar.setHomeButtonEnabled(true);
 	}
 
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		mDrawerToggle.syncState();
+	}
+
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		mDrawerToggle.onConfigurationChanged(newConfig);
+	}
+
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		Intent i = getBaseContext().getPackageManager()
+				.getLaunchIntentForPackage(getBaseContext().getPackageName());
+		i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(i);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+	}
+
+	/**
+	 * Initiate the Top Actionbar
+	 */
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.main, menu);
+		
+		mSearchView = (SearchView) menu.findItem(R.id.menu_search)
+				.getActionView();
+		mSearchView.setOnQueryTextListener(this);
+		return true;
+	}
+	
+	
+	 @Override
+	 public boolean onPrepareOptionsMenu(Menu menu) {
+		 boolean drawerOpen = mDrawerLayout.isDrawerOpen(Gravity.LEFT);
+		 menu.findItem(R.id.menu_search).setVisible(!drawerOpen);
+		 return super.onPrepareOptionsMenu(menu);
+	 }
+	
 	/**
 	 * Respond to clicks on actionbar options
 	 */
@@ -354,52 +406,6 @@ public class MusicLibrary extends Activity implements ServiceConnection,
 		// }
 		return true;
 	}
-
-	@Override
-	protected void onPostCreate(Bundle savedInstanceState) {
-		super.onPostCreate(savedInstanceState);
-		mDrawerToggle.syncState();
-	}
-
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		super.onConfigurationChanged(newConfig);
-		mDrawerToggle.onConfigurationChanged(newConfig);
-	}
-
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		Intent i = getBaseContext().getPackageManager()
-				.getLaunchIntentForPackage(getBaseContext().getPackageName());
-		i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		startActivity(i);
-	}
-
-	@Override
-	protected void onResume() {
-		super.onResume();
-
-	}
-
-	/**
-	 * Initiate the Top Actionbar
-	 */
-	// public boolean onCreateOptionsMenu(Menu menu) {
-	// MenuInflater inflater = getMenuInflater();
-	// inflater.inflate(R.menu.actionbar_top, menu);
-	// return true;
-	// }
-	//
-	//
-	// @Override
-	// public boolean onPrepareOptionsMenu(Menu menu) {
-	// MenuItem search = menu.findItem(R.id.action_search);
-	// MenuItem overflow = menu.findItem(R.id.action_overflow);
-	// // Theme chooser
-	// ThemeUtils.setActionBarItem(this, search, "apollo_search");
-	// ThemeUtils.setActionBarItem(this, overflow, "apollo_overflow");
-	//
-	// return super.onPrepareOptionsMenu(menu);
-	// }
 
 	/**
 	 * 判断两次返回时间间隔,小于两秒则退出程序
@@ -456,10 +462,10 @@ public class MusicLibrary extends Activity implements ServiceConnection,
 			break;
 		// local search
 		case 3:
-			intent.setClass(this, SearchActivity.class);
-			startActivity(intent);
-			break;
-		case 4:
+//			intent.setClass(this, SearchActivity.class);
+//			startActivity(intent);
+//			break;
+//		case 4:
 			new Thread(new Runnable() {
 				@Override
 				public void run() {
@@ -468,15 +474,15 @@ public class MusicLibrary extends Activity implements ServiceConnection,
 			}).start();
 			
 			break;
-		case 5:
+		case 4:
 			//ScanSDCard();
 			File file = Environment.getExternalStorageDirectory();
 			new SingleMediaScanner(getApplicationContext(), file);
 			break;
-		case 6:
+		case 5:
 			AboutDialog();
 			break;
-		case 7:
+		case 6:
 			//exit
 			ApolloService.valuesave.savaGuidePosition(getApplicationContext(), false);
 			ApolloService.valuesave.savaPlayState(getApplicationContext(), false);
@@ -509,6 +515,18 @@ public class MusicLibrary extends Activity implements ServiceConnection,
 										.show();
 							}
 						}).show();
+	}
+
+	@Override
+	public boolean onQueryTextSubmit(String query) {
+		MusicUtils.findSearch(MusicLibrary.this, query);
+		return false;
+	}
+
+	@Override
+	public boolean onQueryTextChange(String newText) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
